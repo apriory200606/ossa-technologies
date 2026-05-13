@@ -5,6 +5,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
+// import Turnstile from 'react-turnstile';
 
 export default function OSSATechnologiesWebsite() {
   const languages = {
@@ -63,6 +64,49 @@ export default function OSSATechnologiesWebsite() {
   ];
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault()
+
+  setLoading(true)
+  setError('')
+
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        message,
+      }),
+    })
+
+    if (!res.ok) {
+      throw new Error('Failed')
+    }
+
+    setSuccess(true)
+
+    setName('')
+    setEmail('')
+    setMessage('')
+  } catch (err) {
+    setError('Ошибка отправки')
+  } finally {
+    setLoading(false)
+  }
+};
 
   return (
     <div className="min-h-screen bg-slate-950 text-white font-sans">
@@ -397,6 +441,98 @@ export default function OSSATechnologiesWebsite() {
 
           </div>
         </div>
+      </section>
+
+      <section
+        id="contacts"
+        className="bg-slate-900 border-t border-slate-800"
+      >
+      <div className="max-w-7xl mx-auto px-6 py-24">
+    
+      <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+      {/* LEFT */}
+      <div>
+
+        <div className="text-blue-400 uppercase tracking-[0.3em] text-sm mb-4">
+          Контакты
+        </div>
+
+        <h2 className="text-5xl font-bold mb-6">
+          Готовы обсудить ваш проект
+        </h2>
+
+        <p className="text-slate-400 text-lg leading-relaxed mb-10 max-w-xl">
+          Свяжитесь с нами для получения коммерческого предложения
+          и консультации по инфраструктурным решениям.
+        </p>
+
+        <div className="space-y-4 text-slate-300">
+          <div>sales@ossa-tech.com</div>
+          <div>support@ossa-tech.com</div>
+          <div>Telegram / WeChat / WhatsApp</div>
+        </div>
+
+      </div>
+
+      {/* RIGHT */}
+      <div className="bg-slate-950 border border-slate-800 rounded-[2rem] p-10 shadow-2xl shadow-black/40">
+
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-5"
+        >
+
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Ваше имя"
+            className="w-full bg-slate-900 border border-slate-700 rounded-2xl px-5 py-4 outline-none focus:border-blue-600"
+          />
+
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
+            className="w-full bg-slate-900 border border-slate-700 rounded-2xl px-5 py-4 outline-none focus:border-blue-600"
+          />
+
+          <textarea
+            rows={5}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder="Опишите ваш проект"
+            className="w-full bg-slate-900 border border-slate-700 rounded-2xl px-5 py-4 outline-none focus:border-blue-600"
+          />
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-blue-600 hover:bg-blue-500 transition rounded-2xl py-4 font-semibold shadow-xl shadow-blue-900/40 disabled:opacity-50"
+          >
+            {loading ? 'Отправка...' : 'Отправить запрос'}
+          </button>
+
+          {success && (
+            <div className="text-green-400">
+              Заявка успешно отправлена
+            </div>
+          )}
+
+          {error && (
+            <div className="text-red-400">
+              {error}
+            </div>
+          )}
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
       </section>
     </div>
   );

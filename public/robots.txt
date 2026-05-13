@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://ossa-tech.com
+
+# Sitemaps
+Sitemap: https://ossa-tech.com/sitemap.xml
