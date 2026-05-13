@@ -117,9 +117,12 @@ export default function OSSATechnologiesWebsite() {
             </a>
           </nav>
 
-          <button className="bg-blue-600 hover:bg-blue-500 transition px-5 py-2 rounded-2xl text-sm font-medium shadow-lg shadow-blue-900/30">
-            Получить предложение
-          </button>
+            <a
+              href="#contacts"
+              className="bg-blue-600 hover:bg-blue-500 transition px-5 py-2 rounded-2xl text-sm font-medium shadow-lg shadow-blue-900/30 inline-flex items-center"
+            >
+              Получить предложение
+            </a>
         </div>
         {mobileMenuOpen && (
   <div className="md:hidden bg-slate-900 border-t border-slate-800 px-6 py-6 space-y-4">
@@ -174,13 +177,19 @@ export default function OSSATechnologiesWebsite() {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <button className="bg-blue-600 hover:bg-blue-500 px-7 py-4 rounded-2xl font-medium transition shadow-xl shadow-blue-900/40">
+              <a
+                href="#contacts"
+                className="bg-blue-600 hover:bg-blue-500 px-7 py-4 rounded-2xl font-medium transition shadow-xl shadow-blue-900/40 inline-flex items-center justify-center"
+              >
                 {currentLang.contact}
-              </button>
+              </a>
 
-              <button className="border border-slate-700 hover:border-slate-500 px-7 py-4 rounded-2xl font-medium transition text-slate-200">
+              <a
+                href="#services"
+                className="border border-slate-700 hover:border-slate-500 px-7 py-4 rounded-2xl font-medium transition text-slate-200 inline-flex items-center justify-center"
+              >
                 {currentLang.solutions}
-              </button>
+              </a>
             </div>
           </div>
 
@@ -377,9 +386,12 @@ export default function OSSATechnologiesWebsite() {
                   Datacenter infrastructure and enterprise networking solutions.
                 </p>
 
-                <button className="bg-blue-600 hover:bg-blue-500 transition px-5 py-3 rounded-2xl text-sm">
+                <a
+                  href="#contacts"
+                  className="bg-blue-600 hover:bg-blue-500 transition px-5 py-3 rounded-2xl text-sm inline-flex items-center justify-center"
+                >
                   Подробнее
-                </button>
+                </a>
               </div>
             </div>
 
