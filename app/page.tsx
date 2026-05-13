@@ -1,6 +1,10 @@
 // app/page.tsx
 
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
+import { Menu, X } from 'lucide-react';
 
 export default function OSSATechnologiesWebsite() {
   const languages = {
@@ -58,6 +62,8 @@ export default function OSSATechnologiesWebsite() {
     'Поддержка и сервис',
   ];
 
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-slate-950 text-white font-sans">
       {/* HEADER */}
@@ -84,6 +90,12 @@ export default function OSSATechnologiesWebsite() {
           </div>
 
           <nav className="hidden md:flex gap-8 text-sm text-slate-300">
+            <button
+              className="md:hidden"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
             <a href="#catalog" className="hover:text-white transition">
               Каталог
             </a>
@@ -109,6 +121,27 @@ export default function OSSATechnologiesWebsite() {
             Получить предложение
           </button>
         </div>
+        {mobileMenuOpen && (
+  <div className="md:hidden bg-slate-900 border-t border-slate-800 px-6 py-6 space-y-4">
+    
+    <a href="#catalog" className="block text-slate-300">
+      Каталог
+    </a>
+
+    <a href="#about" className="block text-slate-300">
+      О компании
+    </a>
+
+    <a href="#services" className="block text-slate-300">
+      Решения
+    </a>
+
+    <a href="#contacts" className="block text-slate-300">
+      Контакты
+    </a>
+
+  </div>
+)}
       </header>
 
       {/* HERO */}
@@ -125,13 +158,13 @@ export default function OSSATechnologiesWebsite() {
 
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 to-slate-950"></div>
 
-        <div className="max-w-7xl mx-auto px-6 py-28 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+        <div className="max-w-7xl mx-auto px-6 py-28 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
             <div className="inline-flex items-center gap-2 border border-blue-700/40 bg-blue-500/10 px-4 py-2 rounded-full text-sm text-blue-300 mb-6">
               Enterprise Infrastructure Solutions
             </div>
 
-            <h1 className="text-5xl lg:text-7xl font-bold leading-tight tracking-tight mb-6">
+            <h1 className="text-4xl sm:text5xl lg:text-7xl font-bold leading-tight tracking-tight mb-6">
               {currentLang.heroTitle.split('для бизнеса')[0]}
               <span className="text-blue-500"> для бизнеса</span>
             </h1>
@@ -207,7 +240,7 @@ export default function OSSATechnologiesWebsite() {
       {/* ABOUT */}
       <section
         id="about"
-        className="max-w-7xl mx-auto px-6 py-24"
+        className="max-w-7xl mx-auto px-6 py-16 lg:py-24"
       >
         <div className="grid lg:grid-cols-2 gap-16 items-center">
 
@@ -247,7 +280,7 @@ export default function OSSATechnologiesWebsite() {
       {/* CATALOG */}
       <section
         id="catalog"
-        className="max-w-7xl mx-auto px-6 py-24"
+        className="max-w-7xl mx-auto px-6 py-16 lg:py-24"
       >
         <div className="mb-14">
           <div className="text-blue-400 uppercase tracking-[0.3em] text-sm mb-4">
@@ -258,7 +291,7 @@ export default function OSSATechnologiesWebsite() {
             Популярные решения
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-6 mt-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-10">
 
             {/* CARD 1 */}
             <div className="bg-slate-900 border border-slate-800 rounded-[2rem] overflow-hidden">
