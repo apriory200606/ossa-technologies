@@ -207,18 +207,18 @@ export default function OSSATechnologiesWebsite() {
 
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 to-slate-950"></div>
 
-        <div className="max-w-7xl mx-auto px-6 py-28 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="max-w-7xl mx-auto px-6 py-28 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-16 items-center">
           <div>
             <div className="inline-flex items-center gap-2 border border-blue-700/40 bg-blue-500/10 px-4 py-2 rounded-full text-sm text-blue-300 mb-6">
               Enterprise Infrastructure Solutions
             </div>
 
-            <h1 className="text-4xl sm:text5xl lg:text-7xl font-bold leading-tight tracking-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight tracking-tight mb-6">
               {currentLang.heroTitle.split('для бизнеса')[0]}
               <span className="text-blue-500"> для бизнеса</span>
             </h1>
 
-            <p className="text-slate-300 text-lg leading-relaxed max-w-xl mb-10">
+            <p className="text-slate-300 text-lg leading-relaxed max-w-2xl mb-10">
               {currentLang.heroDesc}
             </p>
 
