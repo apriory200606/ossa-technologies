@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server'
 
 export async function POST(req: Request) {
+  console.log(process.env.TELEGRAM_BOT_TOKEN)
+  console.log(process.env.TELEGRAM_CHAT_ID)
   try {
     const body = await req.json()
 

@@ -76,6 +76,8 @@ export default function OSSATechnologiesWebsite() {
   const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault()
 
+  console.log('FORM SUBMIT')
+
   setLoading(true)
   setError('')
 
